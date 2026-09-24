@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shareskill-cloud
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
